@@ -27,7 +27,7 @@ class UserReaderRepository
     }
 
     /**
-     * Insert user row.
+     * Get user by the given user id.
      *
      * @param int $userId The user id
      *
