@@ -41,7 +41,7 @@ class UserReaderRepository
         $statement = $this->connection->prepare($sql);
         $statement->execute(['id' => $userId]);
 
-        $row = $statement->fetch() ?: [];
+        $row = $statement->fetch();
 
         if (!$row) {
             throw new DomainException(sprintf('User not found: %s', $userId));
