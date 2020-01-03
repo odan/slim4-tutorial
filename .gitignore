@@ -1,0 +1,11 @@
+build/
+vendor/
+.idea/
+
+!tmp/
+tmp/*
+!tmp/empty
+
+!logs/
+logs/*
+!logs/empty
