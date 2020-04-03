@@ -2,13 +2,15 @@
 
 namespace App\Action;
 
-use Slim\Http\Response;
-use Slim\Http\ServerRequest;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 final class HomeAction
 {
-    public function __invoke(ServerRequest $request, Response $response): Response
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        return $response->withJson(['success' => true]);
+        $response->getBody()->write((string)json_encode(['success' => true]));
+
+        return $response->withHeader('Content-Type', 'application/json');
     }
 }

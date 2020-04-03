@@ -13,7 +13,7 @@ return function (App $app) {
     $container = $app->getContainer();
 
     // Error handler
-    $settings = $container->get(Configuration::class)->getArray('error_handler_middleware');
+    $settings = $container->get('settings')['error_handler_middleware'];
     $displayErrorDetails = (bool)$settings['display_error_details'];
     $logErrors = (bool)$settings['log_errors'];
     $logErrorDetails = (bool)$settings['log_error_details'];

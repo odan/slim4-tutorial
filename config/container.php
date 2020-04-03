@@ -1,13 +1,12 @@
 <?php
 
 use Psr\Container\ContainerInterface;
-use Selective\Config\Configuration;
 use Slim\App;
 use Slim\Factory\AppFactory;
 
 return [
-    Configuration::class => function () {
-        return new Configuration(require __DIR__ . '/settings.php');
+    'settings' => function () {
+        return require __DIR__ . '/settings.php';
     },
 
     App::class => function (ContainerInterface $container) {
@@ -20,18 +19,18 @@ return [
         return $app;
     },
 
-    PDO::class => function (ContainerInterface $container) {
-        $config = $container->get(Configuration::class);
+PDO::class => function (ContainerInterface $container) {
+    $settings = $container->get('settings');
 
-        $host = $config->getString('db.host');
-        $dbname =  $config->getString('db.database');
-        $username = $config->getString('db.username');
-        $password = $config->getString('db.password');
-        $charset = $config->getString('db.charset');
-        $flags = $config->getArray('db.flags');
-        $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
+    $host = $settings['db']['host'];
+    $dbname = $settings['db']['database'];
+    $username = $settings['db']['username'];
+    $password = $settings['db']['password'];
+    $charset = $settings['db']['charset'];
+    $flags = $settings['db']['flags'];
+    $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
 
-        return new PDO($dsn, $username, $password, $flags);
-    },
+    return new PDO($dsn, $username, $password, $flags);
+},
 
 ];

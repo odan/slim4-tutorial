@@ -4,8 +4,8 @@ namespace App\Action;
 
 use App\Domain\User\Data\UserCreateData;
 use App\Domain\User\Service\UserCreator;
-use Slim\Http\Response;
-use Slim\Http\ServerRequest;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 final class UserCreateAction
 {
@@ -16,7 +16,7 @@ final class UserCreateAction
         $this->userCreator = $userCreator;
     }
 
-    public function __invoke(ServerRequest $request, Response $response): Response
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         // Collect input from the HTTP request
         $data = (array)$request->getParsedBody();
@@ -37,6 +37,8 @@ final class UserCreateAction
         ];
 
         // Build the HTTP response
-        return $response->withJson($result)->withStatus(201);
+        $response->getBody()->write((string)json_encode($result));
+
+        return $response->withHeader('Content-Type', 'application/json')->withStatus(201);
     }
 }

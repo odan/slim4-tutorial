@@ -3,8 +3,8 @@
 namespace App\Action;
 
 use App\Domain\User\Service\UserReader;
-use Slim\Http\Response;
-use Slim\Http\ServerRequest;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 final class UserReadAction
 {
@@ -15,7 +15,7 @@ final class UserReadAction
         $this->userReader = $userReader;
     }
 
-    public function __invoke(ServerRequest $request, Response $response, array $args = []): Response
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args = []): Response
     {
         // Collect input from the HTTP request
         $userId = (int)$args['id'];
@@ -33,6 +33,8 @@ final class UserReadAction
         ];
 
         // Build the HTTP response
-        return $response->withJson($result)->withStatus(200);
+        $response->getBody()->write((string)json_encode($result));
+
+        return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
     }
 }
