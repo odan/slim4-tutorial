@@ -15,7 +15,7 @@ final class UserReadAction
         $this->userReader = $userReader;
     }
 
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args = []): Response
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args = []): ResponseInterface
     {
         // Collect input from the HTTP request
         $userId = (int)$args['id'];
