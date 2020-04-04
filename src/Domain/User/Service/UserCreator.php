@@ -4,7 +4,7 @@ namespace App\Domain\User\Service;
 
 use App\Domain\User\Data\UserCreateData;
 use App\Domain\User\Repository\UserCreatorRepository;
-use UnexpectedValueException;
+use InvalidArgumentException;
 
 /**
  * Service.
@@ -31,13 +31,15 @@ final class UserCreator
      *
      * @param UserCreateData $user The user data
      *
+     * @throws InvalidArgumentException
+     *
      * @return int The new user ID
      */
     public function createUser(UserCreateData $user): int
     {
         // Validation
         if (empty($user->username)) {
-            throw new UnexpectedValueException('Username required');
+            throw new InvalidArgumentException('Username required');
         }
 
         // Insert user
