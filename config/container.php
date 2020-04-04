@@ -3,6 +3,7 @@
 use Psr\Container\ContainerInterface;
 use Slim\App;
 use Slim\Factory\AppFactory;
+use Slim\Middleware\ErrorMiddleware;
 
 return [
     'settings' => function () {
@@ -17,6 +18,19 @@ return [
         $app->setBasePath('/slim4-tutorial');
 
         return $app;
+    },
+
+    ErrorMiddleware::class => function (ContainerInterface $container) {
+        $app = $container->get(App::class);
+        $settings = $container->get('settings')['error_handler_middleware'];
+
+        return new ErrorMiddleware(
+            $app->getCallableResolver(),
+            $app->getResponseFactory(),
+            (bool)$settings['display_error_details'],
+            (bool)$settings['log_errors'],
+            (bool)$settings['log_error_details']
+        );
     },
 
     PDO::class => function (ContainerInterface $container) {
