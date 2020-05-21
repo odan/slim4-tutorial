@@ -1,6 +1,7 @@
 <?php
 
 use Psr\Container\ContainerInterface;
+use Selective\BasePath\BasePathMiddleware;
 use Selective\Config\Configuration;
 use Slim\App;
 use Slim\Factory\AppFactory;
@@ -13,12 +14,8 @@ return [
 
     App::class => function (ContainerInterface $container) {
         AppFactory::setContainer($container);
-        $app = AppFactory::create();
 
-        // Optional: Set the base path to run the app in a subdirectory.
-        $app->setBasePath('/slim4-tutorial');
-
-        return $app;
+        return AppFactory::create();
     },
 
     ErrorMiddleware::class => function (ContainerInterface $container) {
@@ -46,6 +43,10 @@ return [
         $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
 
         return new PDO($dsn, $username, $password, $flags);
+    },
+
+    BasePathMiddleware::class => function (ContainerInterface $container) {
+        return new BasePathMiddleware($container->get(App::class));
     },
 
 ];
