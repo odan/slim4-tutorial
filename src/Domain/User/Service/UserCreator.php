@@ -4,7 +4,6 @@ namespace App\Domain\User\Service;
 
 use App\Domain\User\Repository\UserCreatorRepository;
 use App\Exception\ValidationException;
-use InvalidArgumentException;
 
 /**
  * Service.
@@ -31,11 +30,9 @@ final class UserCreator
      *
      * @param array $data The form data
      *
-     * @throws InvalidArgumentException
-     *
      * @return int The new user ID
      */
-    public function createUserFromArray(array $data): int
+    public function createUser(array $data): int
     {
         // Input validation
         $this->validateNewUser($data);
@@ -50,7 +47,7 @@ final class UserCreator
     }
 
     /**
-     * Validate.
+     * Input validation.
      *
      * @param array $data The form data
      *

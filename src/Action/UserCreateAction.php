@@ -37,10 +37,10 @@ final class UserCreateAction
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         // Collect input from the HTTP request
-        $formData = (array)$request->getParsedBody();
+        $data = (array)$request->getParsedBody();
 
         // Invoke the Domain with inputs and retain the result
-        $userId = $this->userCreator->createUserFromArray($formData);
+        $userId = $this->userCreator->createUser($data);
 
         // Transform the result into the JSON representation
         $result = [
