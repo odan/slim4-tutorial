@@ -74,6 +74,8 @@ final class UserCreator
             $errors['email'] = __('Invalid email address');
         }
 
-        throw new ValidationException('Please check your input', $errors);
+        if ($errors) {
+            throw new ValidationException('Please check your input', $errors);
+        }
     }
 }
