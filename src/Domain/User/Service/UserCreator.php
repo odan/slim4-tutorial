@@ -65,13 +65,13 @@ final class UserCreator
         // Here you can also use your preferred validation library
 
         if (empty($data['username'])) {
-            $errors['username'] = __('Input required');
+            $errors['username'] = 'Input required';
         }
 
         if (empty($data['email'])) {
             $errors['email'] = 'Input required';
         } elseif (filter_var($data['email'], FILTER_VALIDATE_EMAIL) === false) {
-            $errors['email'] = __('Invalid email address');
+            $errors['email'] = 'Invalid email address';
         }
 
         if ($errors) {
