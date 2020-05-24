@@ -4,7 +4,7 @@ namespace App\Domain\User\Service;
 
 use App\Domain\User\Data\UserData;
 use App\Domain\User\Repository\UserReaderRepository;
-use UnexpectedValueException;
+use App\Exception\ValidationException;
 
 /**
  * Service.
@@ -31,7 +31,7 @@ final class UserReader
      *
      * @param int $userId The user id
      *
-     * @throws UnexpectedValueException
+     * @throws ValidationException
      *
      * @return UserData The user data
      */
@@ -39,7 +39,7 @@ final class UserReader
     {
         // Validation
         if (empty($userId)) {
-            throw new UnexpectedValueException('User ID required');
+            throw new ValidationException('User ID required');
         }
 
         $user = $this->repository->getUserById($userId);
