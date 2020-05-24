@@ -2,34 +2,45 @@
 
 namespace App\Action;
 
-use App\Domain\User\Data\UserCreateData;
 use App\Domain\User\Service\UserCreator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+/**
+ * Action
+ */
 final class UserCreateAction
 {
+    /**
+     * @var UserCreator
+     */
     private $userCreator;
 
+    /**
+     * The constructor.
+     *
+     * @param UserCreator $userCreator The user creator
+     */
     public function __construct(UserCreator $userCreator)
     {
         $this->userCreator = $userCreator;
     }
 
+    /**
+     * Invoke.
+     *
+     * @param ServerRequestInterface $request The request
+     * @param ResponseInterface $response The response
+     *
+     * @return ResponseInterface The response
+     */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         // Collect input from the HTTP request
-        $data = (array)$request->getParsedBody();
-
-        // Mapping (should be done in a mapper class)
-        $user = new UserCreateData();
-        $user->username = $data['username'];
-        $user->firstName = $data['first_name'];
-        $user->lastName = $data['last_name'];
-        $user->email = $data['email'];
+        $formData = (array)$request->getParsedBody();
 
         // Invoke the Domain with inputs and retain the result
-        $userId = $this->userCreator->createUser($user);
+        $userId = $this->userCreator->createUserFromArray($formData);
 
         // Transform the result into the JSON representation
         $result = [

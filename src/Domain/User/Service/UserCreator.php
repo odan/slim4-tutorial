@@ -2,8 +2,8 @@
 
 namespace App\Domain\User\Service;
 
-use App\Domain\User\Data\UserCreateData;
 use App\Domain\User\Repository\UserCreatorRepository;
+use App\Exception\ValidationException;
 use InvalidArgumentException;
 
 /**
@@ -29,24 +29,51 @@ final class UserCreator
     /**
      * Create a new user.
      *
-     * @param UserCreateData $user The user data
+     * @param array $data The form data
      *
      * @throws InvalidArgumentException
      *
      * @return int The new user ID
      */
-    public function createUser(UserCreateData $user): int
+    public function createUserFromArray(array $data): int
     {
-        // Validation
-        if (empty($user->username)) {
-            throw new InvalidArgumentException('Username required');
-        }
+        // Input validation
+        $this->validateNewUser($data);
 
         // Insert user
-        $userId = $this->repository->insertUser($user);
+        $userId = $this->repository->insertUser($data);
 
         // Logging here: User created successfully
+        //$this->logger->info(sprintf('User created successfully: %s', $userId));
 
         return $userId;
+    }
+
+    /**
+     * Validate.
+     *
+     * @param array $data The form data
+     *
+     * @throws ValidationException
+     *
+     * @return void
+     */
+    private function validateNewUser(array $data): void
+    {
+        $errors = [];
+
+        // Here you can also use your preferred validation library
+
+        if (empty($data['username'])) {
+            $errors['username'] = __('Input required');
+        }
+
+        if (empty($data['email'])) {
+            $errors['email'] = 'Input required';
+        } elseif (filter_var($data['email'], FILTER_VALIDATE_EMAIL) === false) {
+            $errors['email'] = __('Invalid email address');
+        }
+
+        throw new ValidationException('Please check your input', $errors);
     }
 }
