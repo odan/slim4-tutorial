@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ad858db9ab4ea332020249bef36cb56",
+    "content-hash": "d12feefe7b442aaec2840cb7e908d908",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -762,16 +762,16 @@
         },
         {
             "name": "selective/basepath",
-            "version": "0.2.0",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/selective-php/basepath.git",
-                "reference": "58566c248279a0035012c393b669619ff3a140ee"
+                "reference": "c2e9b28acb83999aeb299ba628b964226f71044f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/selective-php/basepath/zipball/58566c248279a0035012c393b669619ff3a140ee",
-                "reference": "58566c248279a0035012c393b669619ff3a140ee",
+                "url": "https://api.github.com/repos/selective-php/basepath/zipball/c2e9b28acb83999aeb299ba628b964226f71044f",
+                "reference": "c2e9b28acb83999aeb299ba628b964226f71044f",
                 "shasum": ""
             },
             "require": {
@@ -803,7 +803,7 @@
                 "slim",
                 "slim4"
             ],
-            "time": "2019-11-24T21:59:39+00:00"
+            "time": "2020-04-11T12:57:24+00:00"
         },
         {
             "name": "selective/config",
@@ -1837,16 +1837,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.5.4",
+            "version": "8.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "8474e22d7d642f665084ba5ec780626cbd1efd23"
+                "reference": "63dda3b212a0025d380a745f91bdb4d8c985adb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8474e22d7d642f665084ba5ec780626cbd1efd23",
-                "reference": "8474e22d7d642f665084ba5ec780626cbd1efd23",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/63dda3b212a0025d380a745f91bdb4d8c985adb7",
+                "reference": "63dda3b212a0025d380a745f91bdb4d8c985adb7",
                 "shasum": ""
             },
             "require": {
@@ -1926,7 +1926,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-04-23T04:39:42+00:00"
+            "time": "2020-05-22T13:51:52+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",

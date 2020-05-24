@@ -1,5 +1,8 @@
 {
     "require": {
+        "php": "^7.2",
+        "ext-json": "*",
+        "ext-pdo": "*",
         "php-di/php-di": "^6.0",
         "selective/basepath": "^1",
         "selective/config": "^1",
@@ -25,6 +28,6 @@
     },
     "scripts": {
         "test": "phpunit --configuration phpunit.xml",
-        "test-coverage": "phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml --coverage-html build/coverage"
+        "test:coverage": "phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml --coverage-html build/coverage"
     }
 }
