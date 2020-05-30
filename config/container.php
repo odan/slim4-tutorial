@@ -2,14 +2,13 @@
 
 use Psr\Container\ContainerInterface;
 use Selective\BasePath\BasePathMiddleware;
-use Selective\Config\Configuration;
 use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Middleware\ErrorMiddleware;
 
 return [
-    Configuration::class => function () {
-        return new Configuration(require __DIR__ . '/settings.php');
+    'settings' => function () {
+        return require __DIR__ . '/settings.php';
     },
 
     App::class => function (ContainerInterface $container) {
@@ -20,7 +19,7 @@ return [
 
     ErrorMiddleware::class => function (ContainerInterface $container) {
         $app = $container->get(App::class);
-        $settings = $container->get(Configuration::class)->getArray('error_handler_middleware');
+        $settings = $container->get('settings')['error_handler_middleware'];
 
         return new ErrorMiddleware(
             $app->getCallableResolver(),
@@ -32,7 +31,7 @@ return [
     },
 
     PDO::class => function (ContainerInterface $container) {
-        $settings = $container->get(Configuration::class)->getArray('db');
+        $settings = $container->get('settings')['db'];
 
         $host = $settings['host'];
         $dbname = $settings['database'];
