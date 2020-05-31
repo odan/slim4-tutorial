@@ -20,8 +20,7 @@ $settings['temp'] = $settings['root'] . '/tmp';
 $settings['public'] = $settings['root'] . '/public';
 
 // Error Handling Middleware settings
-$settings['error_handler_middleware'] = [
-
+$settings['error'] = [
     // Should be set to false in production
     'display_error_details' => true,
 

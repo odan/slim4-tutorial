@@ -19,7 +19,7 @@ return [
 
     ErrorMiddleware::class => function (ContainerInterface $container) {
         $app = $container->get(App::class);
-        $settings = $container->get('settings')['error_handler_middleware'];
+        $settings = $container->get('settings')['error'];
 
         return new ErrorMiddleware(
             $app->getCallableResolver(),
