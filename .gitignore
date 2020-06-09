@@ -1,6 +1,7 @@
 build/
 vendor/
 .idea/
+.phpunit.result.cache
 
 !tmp/
 tmp/*
