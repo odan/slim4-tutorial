@@ -32,7 +32,7 @@ class UserReaderActionTest extends TestCase
         $this->mockMethod([UserReaderRepository::class, 'getUserById'])->willReturn($user);
 
         $request = $this->createRequest('GET', '/users/1');
-        $response = $this->request($request);
+        $response = $this->app->handle($request);
 
         $this->assertSame(200, $response->getStatusCode());
 

@@ -7,7 +7,6 @@ use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
 use Slim\App;
@@ -98,31 +97,25 @@ trait AppTestTrait
     }
 
     /**
-     * Add Json data.
+     * Create a JSON request.
      *
-     * @param ServerRequestInterface $request The request
-     * @param mixed[] $data The data
+     * @param string $method The HTTP method
+     * @param string|UriInterface $uri The URI
+     * @param array|null $data The json data
      *
      * @return ServerRequestInterface
      */
-    protected function withJson(
-        ServerRequestInterface $request,
-        array $data
+    protected function createJsonRequest(
+        string $method,
+        $uri,
+        array $data = null
     ): ServerRequestInterface {
-        $request = $request->withParsedBody($data);
+        $request = $this->createRequest($method, $uri);
+
+        if ($data !== null) {
+            $request = $request->withParsedBody($data);
+        }
 
         return $request->withHeader('Content-Type', 'application/json');
-    }
-
-    /**
-     * Make request.
-     *
-     * @param ServerRequestInterface $request The request
-     *
-     * @return ResponseInterface
-     */
-    protected function request(ServerRequestInterface $request): ResponseInterface
-    {
-        return $this->app->handle($request);
     }
 }
