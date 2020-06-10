@@ -36,10 +36,15 @@ class UserReaderActionTest extends TestCase
 
         $this->assertSame(200, $response->getStatusCode());
 
-        $body = (string)$response->getBody();
-        $this->assertStringContainsString(
-            '{"user_id":1,"username":"admin","first_name":"John","last_name":"Doe","email":"john.doe@example.com"}',
-            $body
+        $this->assertJsonData(
+            $response,
+            [
+                'user_id' => 1,
+                'username' => 'admin',
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'john.doe@example.com',
+            ]
         );
     }
 }
