@@ -3,7 +3,7 @@
         "php": "^7.2",
         "ext-json": "*",
         "ext-pdo": "*",
-        "php-di/php-di": "^6.0",
+        "php-di/php-di": "^6.2",
         "selective/basepath": "^1",
         "slim/psr7": "^1",
         "slim/slim": "^4.4"
