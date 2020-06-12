@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Tests.
  */
-class UserGeneratorTest extends TestCase
+class UserCreatorTest extends TestCase
 {
     use AppTestTrait;
 
