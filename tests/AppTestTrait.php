@@ -66,18 +66,6 @@ trait AppTestTrait
     }
 
     /**
-     * Create a mocked class method.
-     *
-     * @param array|callable $method The class and method
-     *
-     * @return InvocationMocker The mocker
-     */
-    protected function mockMethod($method): InvocationMocker
-    {
-        return $this->mock((string)$method[0])->method((string)$method[1]);
-    }
-
-    /**
      * Create a server request.
      *
      * @param string $method The HTTP method
