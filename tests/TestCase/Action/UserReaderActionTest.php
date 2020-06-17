@@ -17,19 +17,16 @@ class UserReaderActionTest extends TestCase
     /**
      * Test.
      *
+     * @dataProvider provideUserReaderAction
+     *
+     * @param UserData $user The user
+     *
      * @return void
      */
-    public function testUserReaderAction(): void
+    public function testUserReaderAction(UserData $user): void
     {
         // Mock the repository resultset
-        $user = new UserData();
-        $user->id = 1;
-        $user->username = 'admin';
-        $user->email = 'john.doe@example.com';
-        $user->firstName = 'John';
-        $user->lastName = 'Doe';
-
-        $this->mockMethod([UserReaderRepository::class, 'getUserById'])->willReturn($user);
+        $this->mock(UserReaderRepository::class)->method('getUserById')->willReturn($user);
 
         $request = $this->createRequest('GET', '/users/1');
         $response = $this->app->handle($request);
@@ -46,5 +43,26 @@ class UserReaderActionTest extends TestCase
                 'email' => 'john.doe@example.com',
             ]
         );
+    }
+
+    /**
+     * Provider.
+     *
+     * @return array The data
+     */
+    public function provideUserReaderAction(): array
+    {
+        $user = new UserData();
+        $user->id = 1;
+        $user->username = 'admin';
+        $user->email = 'john.doe@example.com';
+        $user->firstName = 'John';
+        $user->lastName = 'Doe';
+
+        return [
+            'User' => [
+                $user
+            ]
+        ];
     }
 }
