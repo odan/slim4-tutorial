@@ -20,29 +20,24 @@ class UserReaderActionTest extends TestCase
      * @dataProvider provideUserReaderAction
      *
      * @param UserData $user The user
+     * @param array $expected The expected result
      *
      * @return void
      */
-    public function testUserReaderAction(UserData $user): void
+    public function testUserReaderAction(UserData $user, array $expected): void
     {
         // Mock the repository resultset
         $this->mock(UserReaderRepository::class)->method('getUserById')->willReturn($user);
 
+        // Create request with method and url
         $request = $this->createRequest('GET', '/users/1');
+
+        // Make request and fetch response
         $response = $this->app->handle($request);
 
+        // Asserts
         $this->assertSame(200, $response->getStatusCode());
-
-        $this->assertJsonData(
-            $response,
-            [
-                'user_id' => 1,
-                'username' => 'admin',
-                'first_name' => 'John',
-                'last_name' => 'Doe',
-                'email' => 'john.doe@example.com',
-            ]
-        );
+        $this->assertJsonData($response, $expected);
     }
 
     /**
@@ -61,7 +56,14 @@ class UserReaderActionTest extends TestCase
 
         return [
             'User' => [
-                $user
+                $user,
+                [
+                    'user_id' => 1,
+                    'username' => 'admin',
+                    'first_name' => 'John',
+                    'last_name' => 'Doe',
+                    'email' => 'john.doe@example.com',
+                ]
             ]
         ];
     }
