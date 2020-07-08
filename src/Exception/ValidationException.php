@@ -21,7 +21,7 @@ final class ValidationException extends RuntimeException
      * @param array $errors The errors
      * @param string $message The error message
      * @param int $code The error code
-     * @param Throwable $previous The previous exception
+     * @param Throwable|null $previous The previous exception
      */
     public function __construct(string $message, array $errors = [], int $code = 422, Throwable $previous = null)
     {
