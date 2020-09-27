@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Service;
 
-use App\Domain\User\Data\UserData;
+use App\Domain\User\Data\UserReaderData;
 use App\Domain\User\Repository\UserReaderRepository;
 use App\Exception\ValidationException;
 
@@ -33,9 +33,9 @@ final class UserReader
      *
      * @throws ValidationException
      *
-     * @return UserData The user data
+     * @return UserReaderData The user data
      */
-    public function getUserDetails(int $userId): UserData
+    public function getUserDetails(int $userId): UserReaderData
     {
         // Validation
         if (empty($userId)) {

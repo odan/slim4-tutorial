@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Data;
 
-final class UserData
+final class UserReaderData
 {
     /**
      * @var int

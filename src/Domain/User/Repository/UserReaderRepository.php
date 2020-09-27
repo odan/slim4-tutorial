@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Repository;
 
-use App\Domain\User\Data\UserData;
+use App\Domain\User\Data\UserReaderData;
 use DomainException;
 use PDO;
 
@@ -33,9 +33,9 @@ class UserReaderRepository
      *
      * @throws DomainException
      *
-     * @return UserData The user data
+     * @return UserReaderData The user data
      */
-    public function getUserById(int $userId): UserData
+    public function getUserById(int $userId): UserReaderData
     {
         $sql = "SELECT id, username, first_name, last_name, email FROM users WHERE id = :id;";
         $statement = $this->connection->prepare($sql);
@@ -48,7 +48,7 @@ class UserReaderRepository
         }
 
         // Map array to data object
-        $user = new UserData();
+        $user = new UserReaderData();
         $user->id = (int)$row['id'];
         $user->username = (string)$row['username'];
         $user->firstName = (string)$row['first_name'];

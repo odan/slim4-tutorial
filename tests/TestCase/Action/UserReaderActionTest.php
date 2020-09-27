@@ -2,7 +2,7 @@
 
 namespace App\Test\TestCase\Action;
 
-use App\Domain\User\Data\UserData;
+use App\Domain\User\Data\UserReaderData;
 use App\Domain\User\Repository\UserReaderRepository;
 use App\Test\AppTestTrait;
 use PHPUnit\Framework\TestCase;
@@ -19,12 +19,12 @@ class UserReaderActionTest extends TestCase
      *
      * @dataProvider provideUserReaderAction
      *
-     * @param UserData $user The user
+     * @param UserReaderData $user The user
      * @param array $expected The expected result
      *
      * @return void
      */
-    public function testUserReaderAction(UserData $user, array $expected): void
+    public function testUserReaderAction(UserReaderData $user, array $expected): void
     {
         // Mock the repository resultset
         $this->mock(UserReaderRepository::class)->method('getUserById')->willReturn($user);
@@ -47,7 +47,7 @@ class UserReaderActionTest extends TestCase
      */
     public function provideUserReaderAction(): array
     {
-        $user = new UserData();
+        $user = new UserReaderData();
         $user->id = 1;
         $user->username = 'admin';
         $user->email = 'john.doe@example.com';
