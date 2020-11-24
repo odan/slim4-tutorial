@@ -6,7 +6,7 @@
         "php-di/php-di": "^6.2",
         "selective/basepath": "^1",
         "slim/psr7": "^1",
-        "slim/slim": "^4.4"
+        "slim/slim": "^4.5"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.4 | ^9"
