@@ -2,6 +2,7 @@ build/
 vendor/
 .idea/
 .phpunit.result.cache
+composer.lock
 
 !tmp/
 tmp/*
