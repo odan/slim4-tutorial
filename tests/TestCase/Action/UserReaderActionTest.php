@@ -4,7 +4,7 @@ namespace App\Test\TestCase\Action;
 
 use App\Domain\User\Data\UserReaderData;
 use App\Domain\User\Repository\UserReaderRepository;
-use App\Test\AppTestTrait;
+use App\Test\Traits\AppTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**

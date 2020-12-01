@@ -3,7 +3,7 @@
 namespace App\Test\TestCase\Action;
 
 use App\Domain\User\Repository\UserCreatorRepository;
-use App\Test\AppTestTrait;
+use App\Test\Traits\AppTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**

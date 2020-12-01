@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Test;
+namespace App\Test\Traits;
 
 use DI\Container;
 use InvalidArgumentException;
-use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -14,14 +13,18 @@ use Slim\Psr7\Factory\ServerRequestFactory;
 use UnexpectedValueException;
 
 /**
- * Container Trait.
+ * App Test Trait.
  */
 trait AppTestTrait
 {
-    /** @var Container */
+    /**
+     * @var Container
+     */
     protected $container;
 
-    /** @var App */
+    /**
+     * @var App
+     */
     protected $app;
 
     /**
@@ -33,7 +36,7 @@ trait AppTestTrait
      */
     protected function setUp(): void
     {
-        $this->app = require __DIR__ . '/../config/bootstrap.php';
+        $this->app = require __DIR__ . '/../../config/bootstrap.php';
 
         $container = $this->app->getContainer();
         if ($container === null) {
