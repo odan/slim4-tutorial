@@ -35,6 +35,6 @@ class UserCreatorTest extends TestCase
 
         $actual = $service->createUser($user);
 
-        static::assertSame(1, $actual);
+        $this->assertSame(1, $actual);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Test\Traits;
 
 use DI\Container;
 use InvalidArgumentException;
+use JsonException;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -114,12 +115,13 @@ trait AppTestTrait
      * @param ResponseInterface $response The response
      * @param array $expected The expected array
      *
+     * @throws JsonException
+     *
      * @return void
      */
     protected function assertJsonData(ResponseInterface $response, array $expected): void
     {
         $actual = (string)$response->getBody();
-        $this->assertJson($actual);
-        $this->assertSame($expected, (array)json_decode($actual, true));
+        $this->assertSame($expected, (array)json_decode($actual, true, 512, JSON_THROW_ON_ERROR));
     }
 }
