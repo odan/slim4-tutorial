@@ -37,7 +37,7 @@ class UserReaderActionTest extends TestCase
 
         // Asserts
         $this->assertSame(200, $response->getStatusCode());
-        $this->assertJsonData($response, $expected);
+        $this->assertJsonData($expected, $response);
     }
 
     /**
