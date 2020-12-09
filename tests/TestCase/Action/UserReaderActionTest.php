@@ -20,7 +20,7 @@ class UserReaderActionTest extends TestCase
      * @dataProvider provideUserReaderAction
      *
      * @param UserReaderData $user The user
-     * @param array $expected The expected result
+     * @param array<mixed> $expected The expected result
      *
      * @return void
      */
@@ -43,7 +43,7 @@ class UserReaderActionTest extends TestCase
     /**
      * Provider.
      *
-     * @return array The data
+     * @return array<mixed> The data
      */
     public function provideUserReaderAction(): array
     {

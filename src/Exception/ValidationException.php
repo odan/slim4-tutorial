@@ -11,14 +11,14 @@ use Throwable;
 final class ValidationException extends RuntimeException
 {
     /**
-     * @var array
+     * @var array<mixed>
      */
     private $errors;
 
     /**
      * The constructor.
      *
-     * @param array $errors The errors
+     * @param array<mixed> $errors The errors
      * @param string $message The error message
      * @param int $code The error code
      * @param Throwable|null $previous The previous exception
@@ -33,7 +33,7 @@ final class ValidationException extends RuntimeException
     /**
      * Get error details.
      *
-     * @return array The details
+     * @return array<mixed> The details
      */
     public function getErrors(): array
     {

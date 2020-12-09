@@ -27,7 +27,7 @@ class UserCreatorRepository
     /**
      * Insert user row.
      *
-     * @param array $user The user
+     * @param array<mixed> $user The user
      *
      * @return int The new ID
      */

@@ -28,7 +28,7 @@ final class UserCreator
     /**
      * Create a new user.
      *
-     * @param array $data The form data
+     * @param array<mixed> $data The form data
      *
      * @return int The new user ID
      */
@@ -49,7 +49,7 @@ final class UserCreator
     /**
      * Input validation.
      *
-     * @param array $data The form data
+     * @param array<mixed> $data The form data
      *
      * @throws ValidationException
      *

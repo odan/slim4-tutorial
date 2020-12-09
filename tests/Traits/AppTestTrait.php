@@ -74,7 +74,7 @@ trait AppTestTrait
      *
      * @param string $method The HTTP method
      * @param string|UriInterface $uri The URI
-     * @param array $serverParams The server parameters
+     * @param array<mixed> $serverParams The server parameters
      *
      * @return ServerRequestInterface
      */
@@ -91,7 +91,7 @@ trait AppTestTrait
      *
      * @param string $method The HTTP method
      * @param string|UriInterface $uri The URI
-     * @param array|null $data The json data
+     * @param array<mixed>|null $data The json data
      *
      * @return ServerRequestInterface
      */
@@ -112,10 +112,11 @@ trait AppTestTrait
     /**
      * Verify that the given array is an exact match for the JSON returned.
      *
-     * @param array $expected The expected array
+     * @param array<mixed> $expected The expected array
      * @param ResponseInterface $response The response
      *
      * @throws JsonException
+     *
      * @return void
      */
     protected function assertJsonData(array $expected, ResponseInterface $response): void
