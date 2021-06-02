@@ -7,13 +7,13 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $containerBuilder = new ContainerBuilder();
 
-// Set up settings
+// Add DI container definitions
 $containerBuilder->addDefinitions(__DIR__ . '/container.php');
 
-// Build PHP-DI Container instance
+// Create DI container instance
 $container = $containerBuilder->build();
 
-// Create App instance
+// Create Slim App instance
 $app = $container->get(App::class);
 
 // Register routes
