@@ -1,4 +1,11 @@
 {
+    "name": "odan/slim4-tutorial",
+    "type": "project",
+    "description": "A Slim 4 skeleton",
+    "keywords": [
+        "slim-framework"
+    ],
+    "license": "MIT",
     "require": {
         "php": "^7.3 || ^8.0",
         "ext-json": "*",
