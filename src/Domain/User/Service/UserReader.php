@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Service;
 
-use App\Domain\User\Data\UserReaderData;
+use App\Domain\User\Data\UserReaderResult;
 use App\Domain\User\Repository\UserReaderRepository;
 use App\Exception\ValidationException;
 
@@ -33,16 +33,26 @@ final class UserReader
      *
      * @throws ValidationException
      *
-     * @return UserReaderData The user data
+     * @return UserReaderResult The user data
      */
-    public function getUserDetails(int $userId): UserReaderData
+    public function getUserDetails(int $userId): UserReaderResult
     {
-        // Validation
+        // Input validation
         if (empty($userId)) {
             throw new ValidationException('User ID required');
         }
 
-        $user = $this->repository->getUserById($userId);
+        $userRow = $this->repository->getUserById($userId);
+
+        // Optional: Do something complex here...
+
+        // Map array to data object
+        $user = new UserReaderResult();
+        $user->id = (int)$userRow['id'];
+        $user->username = (string)$userRow['username'];
+        $user->firstName = (string)$userRow['first_name'];
+        $user->lastName = (string)$userRow['last_name'];
+        $user->email = (string)$userRow['email'];
 
         return $user;
     }

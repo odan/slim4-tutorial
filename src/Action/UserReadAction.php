@@ -43,16 +43,16 @@ final class UserReadAction
         // Collect input from the HTTP request
         $userId = (int)$args['id'];
 
-        // Invoke the Domain with inputs and retain the result
-        $userData = $this->userReader->getUserDetails($userId);
+        // Invoke the Domain (application service) with inputs and keep the result
+        $user = $this->userReader->getUserDetails($userId);
 
         // Transform the result into the JSON representation
         $result = [
-            'user_id' => $userData->id,
-            'username' => $userData->username,
-            'first_name' => $userData->firstName,
-            'last_name' => $userData->lastName,
-            'email' => $userData->email,
+            'user_id' => $user->id,
+            'username' => $user->username,
+            'first_name' => $user->firstName,
+            'last_name' => $user->lastName,
+            'email' => $user->email,
         ];
 
         // Build the HTTP response

@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Repository;
 
-use App\Domain\User\Data\UserReaderData;
+use App\Domain\User\Data\UserReaderResult;
 use DomainException;
 use PDO;
 
@@ -33,9 +33,9 @@ class UserReaderRepository
      *
      * @throws DomainException
      *
-     * @return UserReaderData The user data
+     * @return array The user row
      */
-    public function getUserById(int $userId): UserReaderData
+    public function getUserById(int $userId): array
     {
         $sql = "SELECT id, username, first_name, last_name, email FROM users WHERE id = :id;";
         $statement = $this->connection->prepare($sql);
@@ -47,14 +47,6 @@ class UserReaderRepository
             throw new DomainException(sprintf('User not found: %s', $userId));
         }
 
-        // Map array to data object
-        $user = new UserReaderData();
-        $user->id = (int)$row['id'];
-        $user->username = (string)$row['username'];
-        $user->firstName = (string)$row['first_name'];
-        $user->lastName = (string)$row['last_name'];
-        $user->email = (string)$row['email'];
-
-        return $user;
+        return $row;
     }
 }
