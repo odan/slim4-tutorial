@@ -13,6 +13,6 @@ return function (App $app) {
 
     $app->add(BasePathMiddleware::class);
 
-    // Catch exceptions and errors
+    // Handle exceptions
     $app->add(ErrorMiddleware::class);
 };
