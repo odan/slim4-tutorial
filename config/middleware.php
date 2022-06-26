@@ -2,7 +2,6 @@
 
 use Selective\BasePath\BasePathMiddleware;
 use Slim\App;
-use Slim\Middleware\ErrorMiddleware;
 
 return function (App $app) {
     // Parse json, form data and xml
@@ -14,5 +13,5 @@ return function (App $app) {
     $app->add(BasePathMiddleware::class);
 
     // Handle exceptions
-    $app->add(ErrorMiddleware::class);
+    $app->addErrorMiddleware(true, true, true);
 };

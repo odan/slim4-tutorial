@@ -1,13 +1,2 @@
-build/
 vendor/
 .idea/
-.phpunit.result.cache
-composer.lock
-
-!tmp/
-tmp/*
-!tmp/empty
-
-!logs/
-logs/*
-!logs/empty
