@@ -3,12 +3,17 @@
     "nyholm/psr7": "^1.5",
     "nyholm/psr7-server": "^1.0",
     "php-di/php-di": "^6",
-    "selective/basepath": "^2",
     "slim/slim": "^4"
   },
   "autoload": {
     "psr-4": {
       "App\\": "src/"
     }
+  },
+  "config": {
+    "process-timeout": 0
+  },
+  "scripts": {
+    "start": "php -S localhost:8080 -t public/"
   }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f2c050eb202236e69d6835b92528c39",
+    "content-hash": "95ad4b7a3bdd1f9338d639d82ad984e4",
     "packages": [
         {
             "name": "laravel/serializable-closure",
@@ -804,56 +804,6 @@
                 "source": "https://github.com/php-fig/log/tree/3.0.0"
             },
             "time": "2021-07-14T16:46:02+00:00"
-        },
-        {
-            "name": "selective/basepath",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/selective-php/basepath.git",
-                "reference": "63961fbfcaf492bd0ae8e40653f6c3c750c2f8ad"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/selective-php/basepath/zipball/63961fbfcaf492bd0ae8e40653f6c3c750c2f8ad",
-                "reference": "63961fbfcaf492bd0ae8e40653f6c3c750c2f8ad",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2 || ^8.0",
-                "psr/http-server-middleware": "^1"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2",
-                "overtrue/phplint": "^2",
-                "phpstan/phpstan": "0.*",
-                "phpunit/phpunit": "^8 || ^9",
-                "slim/psr7": "^1",
-                "slim/slim": "^4",
-                "squizlabs/php_codesniffer": "^3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Selective\\BasePath\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A URL base path detector for Slim 4",
-            "homepage": "https://github.com/selective-php/basepath",
-            "keywords": [
-                "basepath",
-                "slim",
-                "slim4"
-            ],
-            "support": {
-                "issues": "https://github.com/selective-php/basepath/issues",
-                "source": "https://github.com/selective-php/basepath/tree/2.1.0"
-            },
-            "time": "2021-07-17T10:03:02+00:00"
         },
         {
             "name": "slim/slim",
