@@ -1,8 +1,8 @@
 {
   "require": {
-    "nyholm/psr7": "^1.6.1",
-    "nyholm/psr7-server": "^1.0",
-    "php-di/php-di": "^6",
+    "nyholm/psr7": "^1",
+    "nyholm/psr7-server": "^1",
+    "php-di/php-di": "^7",
     "slim/slim": "^4"
   },
   "autoload": {
